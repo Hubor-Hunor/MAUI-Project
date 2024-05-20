@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiFrontend.MainPage"
+             xmlns:local="clr-namespace:MauiFrontend"
+             x:DataType="local:MainPageViewModel">
+
+    <Grid RowDefinitions="*,Auto" WidthRequest="500">
+        <CollectionView ItemsSource="{Binding PersonList}"
+                        SelectedItem="{Binding SelectedListItem}"
+                        SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:Person">
+                    <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 20"
+                            Margin="5">
+                        <Grid ColumnDefinitions="*,*,3*">
+                            <CheckBox IsChecked="{Binding IsDone}"
+                                      HorizontalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="2" VerticalOptions="Center">
+                                <Label Text="{Binding PersonName,StringFormat='Name: {0}'}"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding PersonAge,StringFormat='Age: {0}'}"/>
+                                <Label Text="{Binding PersonGender,StringFormat='Gender: {0}'}"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
