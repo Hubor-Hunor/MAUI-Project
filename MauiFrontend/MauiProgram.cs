@@ -19,6 +19,13 @@ namespace MauiFrontend
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri("http://localhost:5217/") });
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<AppShell>();  // Register AppShell
+
             return builder.Build();
         }
     }

@@ -70,7 +70,7 @@ namespace WorkinOut.Controllers
             var peopleWithWorkouts = await _context.People.Include(p => p.Workouts).ToListAsync();
             return Ok(peopleWithWorkouts);
         }
-        [Authorize]
+         
         [HttpPost]
         public async Task<IActionResult> CreatePerson([FromBody]PersonCreateRequest person)
         {
@@ -100,7 +100,7 @@ namespace WorkinOut.Controllers
 
             return NoContent();
         }
-        [Authorize]
+         
         [HttpDelete]
         public async Task<IActionResult> DeleteFirstPerson()
         {

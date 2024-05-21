@@ -11,7 +11,7 @@ using WorkinOut.Models;
 
 namespace WorkinOut.Controllers
 {
-    [Authorize]
+     
     [ApiController]
     [Route("[controller]")]
     public class WorkoutController : ControllerBase

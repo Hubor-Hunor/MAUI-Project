@@ -20,10 +20,7 @@ namespace MauiFrontend
         string personGender;
 
         [JsonIgnore]
-        //public string ImageURL
-        //{
-        //    get { return localURL != null ? localURL : webURL; }
-        //}
+        public string ImageURL { get; set; }
 
         [ObservableProperty]
         bool isDone;

@@ -16,6 +16,22 @@
                         <Grid ColumnDefinitions="*,*,3*">
                             <CheckBox IsChecked="{Binding IsDone}"
                                       HorizontalOptions="Center"/>
+                            <Frame HeightRequest="40"
+                                   WidthRequest="40"
+                                   CornerRadius="70"
+                                   HorizontalOptions="Center"
+                                   IsClippedToBounds="True"
+                                   Padding="0"
+                                   BorderColor="Gray"
+                                   Margin="0,0,0,0"
+                                   Grid.Column="1" >
+                                <Image Source="{Binding ImageURL}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="40"
+                                       WidthRequest="40"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center" />
+                            </Frame>
                             <VerticalStackLayout Grid.Column="2" VerticalOptions="Center">
                                 <Label Text="{Binding PersonName,StringFormat='Name: {0}'}"
                                        FontAttributes="Bold"/>
@@ -27,5 +43,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="Show Pet Details"
+                Command="{Binding ShowPersonDetailsCommand}"
+                Grid.Row="1" Margin="5"/>
     </Grid>
 </ContentPage>

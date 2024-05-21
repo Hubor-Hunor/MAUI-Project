@@ -58,7 +58,7 @@ namespace WorkinOut.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
