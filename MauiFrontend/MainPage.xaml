@@ -43,7 +43,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Show Pet Details"
+        <Button Text="Show Profile Details"
                 Command="{Binding ShowPersonDetailsCommand}"
                 Grid.Row="1" Margin="5"/>
     </Grid>
