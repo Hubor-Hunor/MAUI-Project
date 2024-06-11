@@ -31,7 +31,6 @@ namespace WorkinOut.Controllers
             _userManager = userManager;
             _accountRepository = accountRepository;
         }
-
         [HttpGet]
         public IEnumerable<Person> GetPeople()
         {
@@ -70,23 +69,32 @@ namespace WorkinOut.Controllers
             var peopleWithWorkouts = await _context.People.Include(p => p.Workouts).ToListAsync();
             return Ok(peopleWithWorkouts);
         }
-         
+        //new
         [HttpPost]
-        public async Task<IActionResult> CreatePerson([FromBody]PersonCreateRequest person)
+        public async Task<IActionResult> CreatePerson([FromBody] PersonCreateRequest person)
         {
-            var username = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var account = await _userManager.FindByNameAsync(username);
+          
             var savedPerson = _personRepository.Create(person);
-            if (account == null)
-            {
-                _context.SaveChanges();
-                return Ok("Profile has been created, but log in for more functions");
-            }
-
-            savedPerson.Account = account;
             _context.SaveChanges();
-            return Ok(savedPerson);
+            return Ok("Profile has been created, but log in for more functions");
         }
+        //old 
+        //[HttpPost]
+        //public async Task<IActionResult> CreatePerson([FromBody]PersonCreateRequest person)
+        //{
+        //    var username = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        //    var account = await _userManager.FindByNameAsync(username);
+        //    var savedPerson = _personRepository.Create(person);
+        //    if (account == null)
+        //    {
+        //        _context.SaveChanges();
+        //        return Ok("Profile has been created, but log in for more functions");
+        //    }
+
+        //    savedPerson.Account = account;
+        //    _context.SaveChanges();
+        //    return Ok(savedPerson);
+        //}
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePerson(Guid id, Person updatedPerson)
