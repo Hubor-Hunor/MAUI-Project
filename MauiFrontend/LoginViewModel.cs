@@ -50,10 +50,8 @@ namespace MauiFrontend
 
                         if (result != null)
                         {
-                            // Store the JWT token (e.g., in SecureStorage)
                             await SecureStorage.SetAsync("auth_token", result.Token);
 
-                            // Navigate to the main page
                             await Shell.Current.GoToAsync("//MainPage");
                         }
                     }

@@ -6,6 +6,7 @@
         {
             InitializeComponent();
             Routing.RegisterRoute("persondetails", typeof(PersonDetailPage));
+            Routing.RegisterRoute("addnewperson", typeof(AddNewPersonPage));
         }
     }
 }

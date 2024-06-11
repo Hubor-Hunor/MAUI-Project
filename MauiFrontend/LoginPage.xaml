@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiFrontend="clr-namespace:MauiFrontend"
              x:Class="MauiFrontend.LoginPage"
-             Title="LoginPage">
+             Title="Login Page">
     <StackLayout Padding="30" Spacing="10">
         <Label Text="Username" />
         <Entry Text="{Binding UserName}" />

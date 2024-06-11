@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiFrontend.MainPage"
              xmlns:local="clr-namespace:MauiFrontend"
-             x:DataType="local:MainPageViewModel">
+             x:DataType="local:MainPageViewModel"
+             Title="Main Page">
 
     <Grid RowDefinitions="*,Auto" WidthRequest="500">
         <CollectionView ItemsSource="{Binding PersonList}"
@@ -14,8 +15,6 @@
                     <Border Stroke="Black" StrokeThickness="1" StrokeShape="RoundRectangle 20"
                             Margin="5">
                         <Grid ColumnDefinitions="*,*,3*">
-                            <CheckBox IsChecked="{Binding IsDone}"
-                                      HorizontalOptions="Center"/>
                             <Frame HeightRequest="40"
                                    WidthRequest="40"
                                    CornerRadius="70"
@@ -33,18 +32,31 @@
                                        HorizontalOptions="Center" />
                             </Frame>
                             <VerticalStackLayout Grid.Column="2" VerticalOptions="Center">
-                                <Label Text="{Binding PersonName,StringFormat='Name: {0}'}"
+                                <Label Text="{Binding PersonName}"
                                        FontAttributes="Bold"/>
-                                <Label Text="{Binding PersonAge,StringFormat='Age: {0}'}"/>
-                                <Label Text="{Binding PersonGender,StringFormat='Gender: {0}'}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="3" HorizontalOptions="End"  VerticalOptions="Center">
+                                <!--<Button Text="Update"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UpdatePersonCommand}"
+                                         Margin="2"
+                                         WidthRequest="55"
+                                         HeightRequest="20"/>-->
+                                <Button Text="Delete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeletePersonCommand}"
+                                        CommandParameter="{Binding PersonId}"
+                                        Margin="2"
+                                        WidthRequest="55"
+                                        HeightRequest="20"/>
                             </VerticalStackLayout>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Show Profile Details"
-                Command="{Binding ShowPersonDetailsCommand}"
-                Grid.Row="1" Margin="5"/>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <Button Text="Add New Person" Command="{Binding NavigateToCreatePersonPageCommand}"/>
+            <Button Text="Show Details"  Command="{Binding ShowPersonDetailsCommand}"
+                    Grid.Column="1"/>
+        </Grid>
     </Grid>
 </ContentPage>

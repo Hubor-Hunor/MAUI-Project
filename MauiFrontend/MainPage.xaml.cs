@@ -1,5 +1,4 @@
 ﻿using System.Net.Http.Json;
-using MauiFrontend.Services;
 
 namespace MauiFrontend
 {

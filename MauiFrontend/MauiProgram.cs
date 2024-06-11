@@ -21,10 +21,12 @@ namespace MauiFrontend
 
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri("http://localhost:5217/") });
             builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<CreatePersonViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<AddNewPersonPage>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<MainPage>();
-            builder.Services.AddTransient<AppShell>();  // Register AppShell
+            builder.Services.AddTransient<AppShell>();
 
             return builder.Build();
         }

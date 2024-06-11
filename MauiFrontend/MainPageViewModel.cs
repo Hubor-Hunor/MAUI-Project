@@ -19,12 +19,16 @@ namespace MauiFrontend
 
         [ObservableProperty]
         Person selectedListItem;
-
+    
         public MainPageViewModel(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-   
+        [RelayCommand]
+        public async Task NavigateToCreatePersonPageAsync()
+        {
+            await Shell.Current.GoToAsync("addnewperson");
+        }
         [RelayCommand]
         public async Task ShowPersonDetailsAsync()
         {
@@ -38,9 +42,25 @@ namespace MauiFrontend
             }
 
         }
+        //[RelayCommand]
+        //public async Task UpdatePersonAsync()
+        //{
+        //    await Shell.Current.GoToAsync("updateperson");
+        //}
+        [RelayCommand]  
+        public async Task DeletePersonAsync(Guid id)
+        {
+            var response = await _httpClient.DeleteAsync($"person/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadPersonAsync(); 
+            }
+
+        }
         public async Task LoadPersonAsync()
         {
-            //var token = await SecureStorage.GetAsync("auth_token");
+           
             try
             {
                 var people = await _httpClient.GetFromJsonAsync<Person[]>($"Person");
@@ -58,7 +78,6 @@ namespace MauiFrontend
             }
             catch (Exception ex)
             {
-                // Kezeld a hibát
                 Console.WriteLine($"Hiba történt: {ex.Message}");
             }
         }

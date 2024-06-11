@@ -9,6 +9,8 @@ namespace MauiFrontend
 {
     public partial class Person : ObservableObject
     {
+        [ObservableProperty]
+        Guid personId;
 
         [ObservableProperty] 
         string personName;
@@ -19,8 +21,13 @@ namespace MauiFrontend
         [ObservableProperty]  
         string personGender;
 
+        [ObservableProperty]
+        [JsonIgnore]
+        Workout[] workouts;
+
         [JsonIgnore]
         public string ImageURL { get; set; }
+        
 
         [ObservableProperty]
         bool isDone;

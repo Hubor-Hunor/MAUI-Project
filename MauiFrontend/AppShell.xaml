@@ -10,6 +10,8 @@
 
         <ShellContent Route="login" ContentTemplate="{DataTemplate local:LoginPage}" />
         <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Route="addnewperson" ContentTemplate="{DataTemplate local:AddNewPersonPage}" />
+
     </FlyoutItem>
     <FlyoutItem>
 
